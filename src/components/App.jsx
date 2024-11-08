@@ -1,10 +1,15 @@
 import './App.module.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from '../../redux/contactsOps';
+import { fetchContacts } from '../redux/contacts/operations';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import HomePage from '../pages/HomePage/HomePage';
+import RestrictedRoute from '../components/RestrictedRoute/RestrictedRoute';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import ContactsPage from '../pages/ContactsPage/ContactsPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,23 +19,38 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route element={<HomePage />} />
-        <Route />
-      </Route>
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />}>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
+          <Route />
+        </Route>
+      </Routes>
+    </Layout>
   );
-  // return (
-  //   <div className={css.container}>
-  //     <h1 className={css.header}>Phonebook</h1>
-  //     <ContactForm />
-  //     <SearchBox />
-  //     {isLoading && <p>Request in progress...</p>}
-  //     {error && <p>We found an error: {error}</p>}
-  //     <ContactList />
-  //   </div>
-  // );
 };
 
 export default App;

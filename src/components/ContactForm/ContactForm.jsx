@@ -2,7 +2,7 @@ import css from './ContactForm.module.css';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import { AddProfileSchema } from '../utils/schema';
 import { useDispatch } from 'react-redux';
-import { addContacts } from '../../redux/contactsOps';
+import { addContacts } from '../../redux/contacts/operations';
 
 const INITIAL_VALUES = {
   name: '',
