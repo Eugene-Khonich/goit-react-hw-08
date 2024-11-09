@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import { register } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useId } from 'react';
+import { RegisterUserSchema } from '../utils/schema';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,11 @@ const RegistrationForm = () => {
     actions.resetForm();
   };
   return (
-    <Formik initialValues={INITIAL_VALUE} onSubmit={onHandleSubmit}>
+    <Formik
+      initialValues={INITIAL_VALUE}
+      onSubmit={onHandleSubmit}
+      validationSchema={RegisterUserSchema}
+    >
       <Form>
         <label htmlFor={nameId}>Name</label>
         <Field type="text" name="name" id={nameId} s />

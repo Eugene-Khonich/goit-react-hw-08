@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.goit.global';
+export const instance = axios.create({
+  baseURL: 'https://connections-api.goit.global',
+});
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,7 +17,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await instance.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -28,7 +30,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkApi) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await instance.post('/users/login', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -39,7 +41,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
-    await axios.post('/users/logout');
+    await instance.post('/users/logout');
     clearAurhHeader();
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
@@ -58,7 +60,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await instance.get('/users/me');
       return res.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
