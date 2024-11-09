@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import ContactList from '../../components/ContactList/ContactList';
+// import ContactList from '../../components/ContactList/ContactList';
 import { selectLoading } from '../../redux/contacts/selectors';
 
 const ContactsPage = () => {
@@ -10,7 +10,7 @@ const ContactsPage = () => {
     <div>
       <ContactForm />
       <div>{isLoading && 'Request in progress...'}</div>
-      <ContactList />
+      {/* <ContactList /> */}
     </div>
   );
 };
