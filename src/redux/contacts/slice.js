@@ -6,7 +6,7 @@ import {
 } from '../contacts/operations';
 
 const INITIAL_STATE = {
-  items: null,
+  items: [],
   loading: false,
   error: null,
 };

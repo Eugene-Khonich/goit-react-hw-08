@@ -14,11 +14,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const contactsConfig = {
-  key: 'contactsKey',
-  storage,
-};
-
 const authConfig = {
   key: 'auth',
   storage,
@@ -27,7 +22,7 @@ const authConfig = {
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(contactsConfig, contactsReducer),
+    contacts: contactsReducer,
     filter: filtersReducer,
     auth: persistReducer(authConfig, authReducer),
   },

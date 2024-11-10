@@ -6,11 +6,11 @@ export const instance = axios.create({
 });
 
 const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAurhHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  instance.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
