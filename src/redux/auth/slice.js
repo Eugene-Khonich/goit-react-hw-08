@@ -50,11 +50,8 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(logOut.fulfilled, state => {
-        state.isLoading = false;
-        state.isLoggedIn = false;
-        state.user = { name: null, email: null };
-        state.token = null;
+      .addCase(logOut.fulfilled, () => {
+        return INITIAL_STATE;
       })
       .addCase(logOut.rejected, (state, action) => {
         state.isLoading = false;

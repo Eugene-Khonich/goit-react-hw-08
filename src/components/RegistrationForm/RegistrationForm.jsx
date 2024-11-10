@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { register } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { useId } from 'react';
 import { RegisterUserSchema } from '../utils/schema';
 
 const RegistrationForm = () => {
@@ -11,9 +10,6 @@ const RegistrationForm = () => {
     email: '',
     password: '',
   };
-  const nameId = useId();
-  const emailId = useId();
-  const passwordId = useId();
 
   const onHandleSubmit = (values, actions) => {
     dispatch(
@@ -32,14 +28,14 @@ const RegistrationForm = () => {
       validationSchema={RegisterUserSchema}
     >
       <Form>
-        <label htmlFor={nameId}>Name</label>
-        <Field type="text" name="name" id={nameId} s />
+        <label>Name</label>
+        <Field type="text" name="name" />
 
-        <label htmlFor={emailId}>Email</label>
-        <Field type="email" name="email" id={emailId} />
+        <label>Email</label>
+        <Field type="email" name="email" />
 
-        <label htmlFor={passwordId}>Password</label>
-        <Field type="password" name="password" id={passwordId} />
+        <label>Password</label>
+        <Field type="password" name="password" />
         <button type="submit">Register</button>
       </Form>
     </Formik>

@@ -1,13 +1,11 @@
 import { Formik, Field, Form } from 'formik';
 import { logIn } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { useId } from 'react';
 import { LoginUserSchema } from '../utils/schema';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const emailId = useId();
-  const passwordId = useId();
+
   const INITIAL_VALUES = {
     email: '',
     password: '',
@@ -29,12 +27,14 @@ const LoginForm = () => {
       validationSchema={LoginUserSchema}
     >
       <Form>
-        <label htmlFor={emailId}>Email</label>
-        <Field type="email" name="email" id={emailId} />
-
-        <label htmlFor={passwordId}>Password</label>
-        <Field type="password" name="password" id={passwordId} />
-
+        <label>
+          <span>Email</span>
+          <Field type="email" name="email" />
+        </label>
+        <label>
+          <span>Password</span>
+          <Field type="password" name="password" />
+        </label>
         <button type="submit">Log In</button>
       </Form>
     </Formik>
