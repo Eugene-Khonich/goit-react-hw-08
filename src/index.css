@@ -52,6 +52,9 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+input {
+  height: 25px;
+}
 input:hover {
   border-color: white;
 }
