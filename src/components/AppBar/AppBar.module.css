@@ -5,4 +5,7 @@
   margin-bottom: 16px;
   padding: 10px 10px;
   border-bottom: 1px solid #2a363b;
+  background-image: url('../../img/pexels-markusspiske-1089438.jpg');
+  background-size: cover;
+  height: 70px;
 }

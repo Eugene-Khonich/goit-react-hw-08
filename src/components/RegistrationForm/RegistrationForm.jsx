@@ -1,3 +1,4 @@
+import css from './RegistrationForm.module.css';
 import { Formik, Form, Field } from 'formik';
 import { register } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
@@ -27,16 +28,22 @@ const RegistrationForm = () => {
       onSubmit={onHandleSubmit}
       validationSchema={RegisterUserSchema}
     >
-      <Form>
-        <label>Name</label>
-        <Field type="text" name="name" />
-
-        <label>Email</label>
-        <Field type="email" name="email" />
-
-        <label>Password</label>
-        <Field type="password" name="password" />
-        <button type="submit">Register</button>
+      <Form className={css.form}>
+        <label className={css.label}>
+          <span>Name</span>
+          <Field type="text" name="name" className={css.input} />
+        </label>
+        <label className={css.label}>
+          <span>Email</span>
+          <Field type="email" name="email" className={css.input} />
+        </label>
+        <label className={css.label}>
+          <span>Password</span>
+          <Field type="password" name="password" className={css.input} />
+        </label>
+        <button type="submit" className={css.btn}>
+          Register
+        </button>
       </Form>
     </Formik>
   );

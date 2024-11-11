@@ -1,8 +1,13 @@
 import LoginForm from '../../components/LoginForm/LoginForm';
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  placeItems: 'center',
+};
 
 const LoginPage = () => {
   return (
-    <div>
+    <div style={style}>
       <LoginForm />
     </div>
   );

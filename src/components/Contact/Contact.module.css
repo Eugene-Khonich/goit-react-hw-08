@@ -3,9 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 16px;
-  width: calc((100% - 10px) / 3);
+  width: calc((100% - 20px) / 4);
   min-width: 300px;
-  border: 1px solid white;
+  border: 1px solid green;
   border-radius: 10px;
   align-items: center;
 }
@@ -18,8 +18,10 @@
   gap: 6px;
 }
 .btn {
-  border-radius: 6px;
-  padding: 10px 5px;
-  font-size: 20px;
-  font-weight: 400;
+  width: 120px;
+  padding: 10px;
+  background-color: black;
+  color: rgba(20, 220, 20, 0.9);
+  border: 1px solid green;
+  margin-bottom: 30px;
 }

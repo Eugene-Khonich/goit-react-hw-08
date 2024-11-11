@@ -23,15 +23,15 @@ const ContactForm = () => {
       validationSchema={AddProfileSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={css.container}>
-        <label className={css.labelName}>
+      <Form className={css.form}>
+        <label className={css.label}>
           <span>Name</span>
-          <Field type="text" name="name" />
+          <Field type="text" name="name" className={css.input} />
           <ErrorMessage name="name" component="span" className={css.errorMsg} />
         </label>
-        <label className={css.labelNumber}>
+        <label className={css.label}>
           <span>Number</span>
-          <Field type="text" name="number" />
+          <Field type="text" name="number" className={css.input} />
           <ErrorMessage
             name="number"
             component="span"

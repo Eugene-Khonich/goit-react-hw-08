@@ -4,7 +4,11 @@ import ContactList from '../../components/ContactList/ContactList';
 import { selectLoading } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
-
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  placeItems: 'center',
+};
 const ContactsPage = () => {
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
@@ -14,7 +18,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={style}>
       <ContactForm />
       <div>{isLoading && 'Request in progress...'}</div>
       <ContactList />

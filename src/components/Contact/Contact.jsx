@@ -3,7 +3,9 @@ import { MdPerson } from 'react-icons/md';
 import { MdPhone } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { deleteContacts } from '../../redux/contacts/operations';
-
+const style = {
+  person: { color: 'rgba(20, 220, 20, 0.9)' },
+};
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
@@ -11,7 +13,7 @@ const Contact = ({ name, number, id }) => {
     <li className={css.card}>
       <div>
         <h3 className={css.name}>
-          <MdPerson />
+          <MdPerson style={style.person} />
           {name}
         </h3>
         <p className={css.number}>
